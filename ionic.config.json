@@ -1,5 +1,7 @@
 {
   "name": "Who-Pays-Front",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
