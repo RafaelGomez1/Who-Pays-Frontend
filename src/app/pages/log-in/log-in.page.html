@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>logIn</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <img class="rounded mx-auto d-block w-50 h-25 mt-5" src="../../assets/img/who-pays-image-logo.png">
+
+  <ion-list>
+    <ion-item class="mt-5">
+      <ion-label  position-="floating">Username</ion-label>
+      <ion-input class="input-length" type="text"
+                 [(ngModel)]="userLogin.username"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="mt-2" >
+      <ion-label position-="floating">Password</ion-label>
+      <ion-input class="input-length" type="password" size="50"
+                 [(ngModel)]="userLogin.password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button class=" button-center button-color text-center mt-3" shape="round" expand="block" size="large">
+    LogIn
+  </ion-button>
+
+  <div class="text-center mt-2">
+    <a href="" class="foyopass-div">forgot your password?</a>
+  </div>
+
 
 </ion-content>
