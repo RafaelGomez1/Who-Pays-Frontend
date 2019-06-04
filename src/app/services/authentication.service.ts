@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserLogin} from '../models/UserLogin';
 import {Observable} from 'rxjs';
 import {LogInRs} from '../models/LogInRs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,10 @@ import {LogInRs} from '../models/LogInRs';
 export class AuthenticationService {
 
   serverUrl = 'http://134.209.240.175:8100';
+  localserverUrl = 'http://localhost:8081';
 
  httOptions = {
-    headers: new HttpHeaders({'Content-Type' : 'application/json'})
+    headers: new HttpHeaders({Accept : 'application/json'})
   };
 
   constructor(private http: HttpClient) {}
@@ -25,7 +26,7 @@ export class AuthenticationService {
 
   checkUserLogin(userLogin: UserLogin): Observable<LogInRs> {
     return this.http.post<LogInRs>(`${this.serverUrl}/login`, userLogin,
-        { headers : {'Content-Type' : 'application/json', Accept : 'application/json'}});
+        { headers : {Accept : 'application/json'}});
   }
 
   getHeaders() {

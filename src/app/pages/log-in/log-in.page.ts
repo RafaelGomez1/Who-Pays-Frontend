@@ -21,13 +21,10 @@ export class LogInPage implements OnInit {
   }
 
   onSubmitCredentials() {
-
-      this.router.navigateByUrl('/tabs');
-
-     /* this.authenticationService.checkUserLogin(this.userLogin).subscribe(loginRs => {
+      this.authenticationService.checkUserLogin(this.userLogin).subscribe(loginRs => {
               if (loginRs.valid) {
                  this.router.navigateByUrl('/tabs');
               }
-      });*/
+      });
   }
 }
