@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserLogin} from '../../models/UserLogin';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
-import {NavController} from '@ionic/angular';
+import {NavController, ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-log-in',
@@ -15,7 +15,8 @@ export class LogInPage implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private  router: Router,
-              private navController: NavController) {
+              private navController: NavController,
+              public toastController: ToastController) {
     this.userLogin = new UserLogin();
   }
 
@@ -27,8 +28,20 @@ export class LogInPage implements OnInit {
           if (loginRs) {
               this.router.navigateByUrl('/tabs');
           } else {
-              // error toast
+              // Creates a toast with an error
+             this.presentToast();
           }
       });
   }
+
+    async presentToast() {
+        const toast = await this.toastController.create({
+            message: 'Invalid Credentials',
+            color: 'danger',
+            keyboardClose: true,
+            translucent: true,
+            duration: 2000
+        });
+        toast.present();
+    }
 }
