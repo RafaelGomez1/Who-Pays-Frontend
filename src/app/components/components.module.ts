@@ -7,6 +7,7 @@ import {HeaderPageModule} from './header/header.module';
   imports: [
     CommonModule,
     HeaderPageModule
-  ]
+  ],
+  exports: [HeaderPageModule]
 })
 export class ComponentsModule { }

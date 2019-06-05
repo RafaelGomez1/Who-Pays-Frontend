@@ -24,12 +24,10 @@ export class LogInPage implements OnInit {
 
   onSubmitCredentials() {
       this.authenticationService.checkUserLogin(this.userLogin).subscribe(loginRs => {
-          console.log('the response has been given');
-          console.log(loginRs);
           if (loginRs) {
-              console.log('hi im in');
               this.router.navigateByUrl('/tabs');
-             //  this.navController.navigateForward('/tabs/tab2/(home:home)');
+          } else {
+              // error toast
           }
       });
   }
