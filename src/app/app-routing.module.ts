@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'group-expenses', loadChildren: './pages/group-expenses/group-expenses.module#GroupExpensesPageModule' },
   { path: 'group-balance', loadChildren: './pages/group-balance/group-balance.module#GroupBalancePageModule' },
   { path: 'group-members', loadChildren: './pages/group-members/group-members.module#GroupMembersPageModule' },
-  { path: 'header', loadChildren: './components/header/header.module#HeaderPageModule' },
   { path: 'list-view', loadChildren: './components/list-view/list-view.module#ListViewPageModule' }
 
 ];
