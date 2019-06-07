@@ -22,6 +22,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
+          },
+          {
+            path: 'group',
+            loadChildren: '../pages/group-overview/group-overview.module#GroupOverviewPageModule'
           }
         ]
       },
@@ -44,6 +48,11 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/tabs/tabs/tab2',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group',
+    redirectTo: '/tabs/tabs/tab2/group',
     pathMatch: 'full'
   }
 ];

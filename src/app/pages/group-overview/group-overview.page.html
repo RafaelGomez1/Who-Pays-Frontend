@@ -1,9 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>groupOverview</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" routerLink="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="text-center">
+            {{activityName}}
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+   <!-- <ion-virtual-scroll [items]="group.groupExpenses">
+        <ion-item *virtualItem="let groupExpense">
+            <ion-label class="text-center text-white">{{groupExpense.concept}}</ion-label>
+        </ion-item>
+    </ion-virtual-scroll>-->
 </ion-content>

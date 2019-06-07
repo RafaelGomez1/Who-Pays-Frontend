@@ -1,11 +1,31 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+        <ion-buttons slot="end">
+            <ion-icon  size="large" name="add" (click)="createGroup($event)"></ion-icon>
         </ion-buttons>
         <ion-title class="text-center">
             Groups List
         </ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content></ion-content>
+<ion-content>
+    <ion-searchbar [animated]="true" (input)="filterList($event)" [showCancelButton]="true" (ionClear)="doRefresh($event)" color="dark"></ion-searchbar>
+    <ion-refresher (ionRefresh)="doRefresh($event)"
+                   [snapbackDuration]="500">
+        <ion-refresher-content
+            [pullingIcon]="arrow-dropdown"
+            [pullingText]="Refresh"
+            [refreshingSpinner]="circles">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-virtual-scroll [items]="userGroupsFiltered">
+        <ion-item *virtualItem="let group" (click)="goToGroupPage($event, group)">
+            <ion-thumbnail>
+                <img src="../../assets/img/meme.jpg" class="rounded-circle">
+            </ion-thumbnail>
+            <ion-label class="text-center text-white">{{group.groupName}}</ion-label>
+        </ion-item>
+
+    </ion-virtual-scroll>
+</ion-content>

@@ -2,7 +2,7 @@ import {User} from './User';
 import {GroupExpenses} from './GroupExpenses';
 
 export class Group {
-    groupId: string;
+    idString: string;
     groupName: string;
     creationDate: Date;
     membersList: User[];

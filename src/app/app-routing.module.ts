@@ -6,7 +6,6 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'log-in', loadChildren: './pages/log-in/log-in.module#LogInPageModule' },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
-  { path: 'group-list', loadChildren: './pages/group-list/group-list.module#GroupListPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'group-overview', loadChildren: './pages/group-overview/group-overview.module#GroupOverviewPageModule' },
   { path: 'group-expenses', loadChildren: './pages/group-expenses/group-expenses.module#GroupExpensesPageModule' },
