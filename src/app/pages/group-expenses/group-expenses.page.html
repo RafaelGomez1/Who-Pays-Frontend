@@ -1,9 +1,65 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>groupExpenses</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/tabs" routerLink="/tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center">
+      {{activityName || 'Group Overview'}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="ion-icon-color" size="large" name="add"  slot="icon-only"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-segment>
+        <ion-segment-button (ionSelect)="membersSegmentSelected($event)">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Members</ion-label>
+        </ion-segment-button>
+        <ion-segment-button [checked]="true" (ionSelect)="expensesSegmentSelected($event)">
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>Expenses</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (ionSelect)="balanceSegmentSelected($event)">
+            <ion-icon name="pie"></ion-icon>
+            <ion-label>Balance</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    <ion-virtual-scroll [items]="groupExpenses" *ngIf="expenses">
+      <ion-item *virtualItem="let groupExpense">
+          <ion-label class="text-white">{{groupExpense.date}}</ion-label>
+          <ion-label class="text-center text-white">{{groupExpense.concept}}</ion-label>
+          <ion-badge color="danger">Not Paid</ion-badge>
+      </ion-item>
+    </ion-virtual-scroll>
+    <ion-virtual-scroll [items]="groupMembers" *ngIf="members">
+        <ion-item *virtualItem="let member">
+            <ion-thumbnail>
+                <img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle">
+            </ion-thumbnail>
+            <ion-label class="text-center text-white">{{member.username}}</ion-label>
+            <ion-badge>Admin</ion-badge>
+        </ion-item>
+    </ion-virtual-scroll>
 
+    <ion-slides pager="true" [options]="slideOptions" *ngIf="balance">
+        <ion-slide>
+            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
+            <label>slide 1</label>
+        </ion-slide>
+        <ion-slide>
+            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
+            <label>slide 2</label>
+        </ion-slide>
+        <ion-slide>
+            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
+            <label>slide 3</label>
+        </ion-slide>
+        <ion-slide>
+            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
+            <label>slide 4</label>
+        </ion-slide>
+    </ion-slides>
 </ion-content>

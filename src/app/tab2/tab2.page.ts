@@ -25,8 +25,8 @@ export class Tab2Page implements OnInit {
   }
 
   goToGroupPage(event: any, selectedGroup: Group) {
-      console.log(selectedGroup);
-      this.router.navigate(['/tabs/group', selectedGroup.idString]);
+
+      this.router.navigate(['/tabs/group', selectedGroup.id]);
   }
 
   filterList(event: any) {

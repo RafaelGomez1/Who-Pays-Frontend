@@ -24,8 +24,17 @@ const routes: Routes = [
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
           },
           {
-            path: 'group',
-            loadChildren: '../pages/group-overview/group-overview.module#GroupOverviewPageModule'
+            path: 'group/balance/:id',
+            loadChildren: '../pages/group-balance/group-balance.module#GroupBalancePageModule'
+          },
+          {
+            path: 'group/:id',
+            children: [
+                {
+                    path: '',
+                    loadChildren: '../pages/group-expenses/group-expenses.module#GroupExpensesPageModule'
+                }
+            ]
           }
         ]
       },
@@ -51,8 +60,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'group',
-    redirectTo: '/tabs/tabs/tab2/group',
+    path: 'group/:id',
+    redirectTo: '/tabs/tabs/tab2/group/:id',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/balance/:id',
+    redirectTo: '/tabs/tabs/tab2/group/balance/:id',
     pathMatch: 'full'
   }
 ];

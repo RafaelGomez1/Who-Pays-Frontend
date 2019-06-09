@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, pipe} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Group} from '../models/Group';
 
 @Injectable({
@@ -23,6 +23,8 @@ export class GroupsService {
   deleteGroup(groupId: string) {
     return this.http.delete(`${this.serverUrl}/groups/` + groupId + `/delete`, {headers : {Accept: 'application/json'}}).pipe();
   }
+
+  getGroupBalance(groupId: string) {}
 
 
 }
