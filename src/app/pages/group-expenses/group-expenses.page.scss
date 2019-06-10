@@ -50,3 +50,31 @@ ion-badge {
 ion-slides {
   --bullet-background-active: #00b33c !important;
 }
+
+ngx-charts-bar-vertical-2d {
+  margin-top: 1em !important;
+  fontColor: white !important;
+  margin-right:2.5em !important;
+  text { fill: #fff !important; }
+}
+
+::ng-deep .ngx-charts {
+  text { fill: #fff !important; }
+  text-align: center !important;
+
+}
+
+ngx-charts-pie-chart {
+  fontColor: white !important;
+  text { fill: #fff !important; }
+}
+
+.chart-legend .legend-labels {
+  text-align: center !important;
+  text { fill: #fff !important; }
+}
+
+ngx-charts-pie-grid {
+  fontColor: white !important;
+  text { fill: #fff !important; }
+}

@@ -6,7 +6,7 @@
     <ion-title class="text-center">
       {{activityName || 'Group Overview'}}
     </ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" (click)="addElement($event)">
       <ion-icon class="ion-icon-color" size="large" name="add"  slot="icon-only"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -31,13 +31,13 @@
       <ion-item *virtualItem="let groupExpense">
           <ion-label class="text-white">{{groupExpense.date}}</ion-label>
           <ion-label class="text-center text-white">{{groupExpense.concept}}</ion-label>
-          <ion-badge color="danger">Not Paid</ion-badge>
+          <ion-badge color="danger">{{groupExpense.status}}</ion-badge>
       </ion-item>
     </ion-virtual-scroll>
     <ion-virtual-scroll [items]="groupMembers" *ngIf="members">
         <ion-item *virtualItem="let member">
             <ion-thumbnail>
-                <img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle">
+                <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
             </ion-thumbnail>
             <ion-label class="text-center text-white">{{member.username}}</ion-label>
             <ion-badge>Admin</ion-badge>
@@ -46,20 +46,36 @@
 
     <ion-slides pager="true" [options]="slideOptions" *ngIf="balance">
         <ion-slide>
-            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
-            <label>slide 1</label>
+            <ngx-charts-pie-grid class="text-white"
+                                 [scheme]="scheme"
+                                 [results]="chartData"
+                                 [view]="[platform.width(), platform.height() - platform.height()/4]"
+            ></ngx-charts-pie-grid>
         </ion-slide>
         <ion-slide>
-            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
-            <label>slide 2</label>
+            <ngx-charts-pie-chart
+                    [scheme]="scheme"
+                    [results]="chartData"
+                    [view]="[platform.width(), platform.height() - platform.height()/3]"
+                    [legend]="true"
+                    legendTitle=""
+                    doughnut="true"
+                    legendPosition="below"
+                    [explodeSlices]="false"></ngx-charts-pie-chart>
         </ion-slide>
         <ion-slide>
-            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
-            <label>slide 3</label>
-        </ion-slide>
-        <ion-slide>
-            <ion-img src="../../assets/img/who-pays-profile-image.jpg" class="rounded-circle"></ion-img>
-            <label>slide 4</label>
+            <ngx-charts-bar-vertical-2d
+                    [scheme]="scheme"
+                    [results]="groupedVerticalBarChart"
+                    [view]="[platform.width(), platform.height() - platform.height()/4]"
+                    [legend]="false"
+                    xAxis="true"
+                    yAxis="true"
+                    legendTitle=""
+                    [showXAxisLabel]="true"
+                    [showYAxisLabel]="true"
+                    [legendPosition]="'top'"
+            ></ngx-charts-bar-vertical-2d>
         </ion-slide>
     </ion-slides>
 </ion-content>
