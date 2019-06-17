@@ -9,15 +9,14 @@ export class GroupExpenses {
     totalQuantity: number;
     totalDebt: number;
     totalPaid: number;
-    payers: Payer[];
-    debtors: Debtor[];
+    payers: Payer[] = [];
+    debtors: Debtor[] = [];
     date: Date;
     category: Category;
-    status: Status;
-    payments: Payment[];
+    status: Status = Status.NOT_PAID;
+    payments: Payment[] = [];
 
     constructor() {
         this.date = new Date();
-        this.status = Status.NOT_PAID;
     }
 }

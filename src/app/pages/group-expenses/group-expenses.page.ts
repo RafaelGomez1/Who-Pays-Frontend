@@ -136,7 +136,7 @@ export class GroupExpensesPage implements OnInit {
     }
 
     addElement(event: any) {
-
+        this.router.navigateByUrl('/tabs/group/create/expenses');
     }
 
 }

@@ -28,6 +28,10 @@ const routes: Routes = [
             loadChildren: '../pages/group-balance/group-balance.module#GroupBalancePageModule'
           },
           {
+            path: 'group/create/expenses',
+            loadChildren: '../pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule'
+          },
+          {
             path: 'group/:id',
             children: [
                 {
@@ -67,6 +71,11 @@ const routes: Routes = [
   {
     path: 'group/balance/:id',
     redirectTo: '/tabs/tabs/tab2/group/balance/:id',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/create/expenses',
+    redirectTo: '/tabs/tabs/tab2/group/create/expenses',
     pathMatch: 'full'
   }
 ];

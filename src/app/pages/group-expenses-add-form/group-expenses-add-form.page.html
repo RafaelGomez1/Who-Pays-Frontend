@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/tabs" routerLink="/tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center text-white" color="light">Add Expenses</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-item color="dark" class="mt-2">
+    <ion-icon class="mr-1" name="mic"  (click)="speechToTextInput($event)"></ion-icon>
+    <ion-label class="text-white">Concept</ion-label>
+    <ion-input class="input-length" type="text" [(ngModel)]="concept"></ion-input>
+  </ion-item>
+  <ion-item color="dark" class="mt-2">
+    <ion-icon class="mr-1" name="calendar"></ion-icon>
+    <ion-label class="text-white">Date</ion-label>
+    <ion-datetime placeholder="17-05-2019"
+                  displayFormat="DD MMMM YYYY"
+                  cancelText="Cancel"
+                  [(ngModel)]="date"
+                  (change)="logDate($event)"
+                  ></ion-datetime>
+  </ion-item>
+  <ion-item color="dark" class="mt-2">
+    <ion-label class="text-white">Quantity</ion-label>
+    <ion-input class="input-length" type="number" [(ngModel)]="quantity"></ion-input>
+  </ion-item>
+  <ion-item color="dark" class="mt-2">
+    <ion-label class="text-white">Total Debt</ion-label>
+    <ion-input class="input-length" type="number" [(ngModel)]="totalDebt"></ion-input>
+  </ion-item>
+  <ion-item color="dark" class="mt-2">
+    <ion-icon class="mr-1" name="person"></ion-icon>
+    <ion-label class="text-white">Debtors</ion-label>
+    <ion-select multiple="true" okText="Select" cancelText="Cancel">
+      <ion-select-option value="Jt">Jt</ion-select-option>
+      <ion-select-option value="Rafa">Rafa</ion-select-option>
+      <ion-select-option value="Diego">Diego</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item color="dark" class="mt-2">
+    <ion-icon class="mr-1" name="person"></ion-icon>
+    <ion-label class="text-white">Payers</ion-label>
+    <ion-select multiple="true" okText="Select" cancelText="Cancel">
+      <ion-select-option value="Jt">Jt</ion-select-option>
+      <ion-select-option value="Rafa">Rafa</ion-select-option>
+      <ion-select-option value="Diego">Diego</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
