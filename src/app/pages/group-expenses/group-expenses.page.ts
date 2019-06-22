@@ -50,15 +50,15 @@ export class GroupExpensesPage implements OnInit {
       this.getGroupById();
       this.getGroupBalance(this.groupId);
     });
-
-    ionViewWillEnter(); {
-      console.log('USER ionViewWillEnter');
-    }
-
     // Initializes the ion-segment variables
     this.expenses = true;
     this.members = false;
     this.balance = false;
+  }
+
+  ionViewWillEnter() {
+      this.getGroupById();
+      this.getGroupBalance(this.groupId);
   }
 
   getGroupById() {

@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { GroupExpensesAddFormPage } from './group-expenses-add-form.page';
+import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 
 const routes: Routes = [
   {
@@ -23,6 +24,6 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   declarations: [GroupExpensesAddFormPage],
-  providers: [CurrencyPipe]
+  providers: [CurrencyPipe, SpeechRecognition]
 })
 export class GroupExpensesAddFormPageModule {}

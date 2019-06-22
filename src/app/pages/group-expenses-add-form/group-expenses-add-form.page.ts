@@ -8,6 +8,8 @@ import {User} from '../../models/User';
 import {Group} from '../../models/Group';
 import {Payer} from '../../models/Payer';
 import {Debtor} from '../../models/Debtor';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+
 
 @Component({
   selector: 'app-group-expenses-add-form',
@@ -33,7 +35,8 @@ export class GroupExpensesAddFormPage implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private groupService: GroupsService,
-              private currencyPipe: CurrencyPipe) {
+              private currencyPipe: CurrencyPipe,
+              private speechRecognition: SpeechRecognition) {
     this.route.queryParams.subscribe(params => {
       this.groupId = this.route.snapshot.paramMap.get('groupId');
       this.getGroupById();
@@ -42,34 +45,31 @@ export class GroupExpensesAddFormPage implements OnInit {
 
   ngOnInit() {
     this.groupExpense = new GroupExpenses();
+
+    this.speechRecognition.hasPermission()
+        .then((hasPermission: boolean) => {
+          if (!hasPermission) {
+            this.speechRecognition.requestPermission()
+                .then(
+                    () => console.log('Granted'),
+                    () => console.log('Denied')
+                );
+          }
+    });
   }
 
   speechToTextInput(event: any) {
-  }
-
-  createMyForm() {
-    return this.formBuilder.group({
-
-      concept: ['', Validators.required],
-      date: ['', Validators.required],
-      quantity: ['', Validators.required],
-      totalDebt: ['', Validators.required],
-      category: ['', Validators.required],
-      debtors: ['', Validators.required],
-      payers: ['', Validators.required],
-    });
+    this.speechRecognition.startListening()
+        .subscribe(
+            (matches: Array<string>) => {
+              this.concept = matches[0];
+              console.log(this.concept);
+            }
+        );
   }
 
   logDate(event: any) {
     console.log(this.groupExpense.date);
-  }
-
-  saveData() {
-    console.log(this.myForm.value);
-  }
-
-  getCurrency(amount: number) {
-    return this.currencyPipe.transform(amount, 'EUR', true, '1,2-2');
   }
 
   getGroupById() {
@@ -110,7 +110,6 @@ export class GroupExpensesAddFormPage implements OnInit {
     this.groupExpense.totalPaid = 0;
     this.groupExpense.payers = this.payers;
     this.groupExpense.debtors = this.debtors;
-    // this.groupExpense.status = Status.NOT_PAID;
 
     this.groupService.addExpensesToGroup(this.groupExpense, this.groupId).subscribe();
     this.router.navigate(['/tabs/group', this.groupId]);
