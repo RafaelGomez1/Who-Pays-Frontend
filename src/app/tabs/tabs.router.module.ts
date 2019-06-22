@@ -22,6 +22,27 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
+          },
+          {
+            path: 'group/balance/:id',
+            loadChildren: '../pages/group-balance/group-balance.module#GroupBalancePageModule'
+          },
+          {
+            path: 'group/create/expenses',
+            loadChildren: '../pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule'
+          },
+          {
+            path: 'group/create/expenses/:groupId',
+            loadChildren: '../pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule'
+          },
+          {
+            path: 'group/:id',
+            children: [
+                {
+                    path: '',
+                    loadChildren: '../pages/group-expenses/group-expenses.module#GroupExpensesPageModule'
+                }
+            ]
           }
         ]
       },
@@ -43,7 +64,27 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/tabs/tab2',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/:id',
+    redirectTo: '/tabs/tabs/tab2/group/:id',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/balance/:id',
+    redirectTo: '/tabs/tabs/tab2/group/balance/:id',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/create/expenses',
+    redirectTo: '/tabs/tabs/tab2/group/create/expenses',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/create/expenses/:groupId',
+    redirectTo: '/tabs/tabs/tab2/group/create/expenses/:groupId',
     pathMatch: 'full'
   }
 ];

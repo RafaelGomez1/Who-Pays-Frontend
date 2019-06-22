@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupBalancePage implements OnInit {
 
+  slideOptions = {
+    initialSlide: 1,
+    speed: 400
+  };
+
   constructor() { }
 
   ngOnInit() {

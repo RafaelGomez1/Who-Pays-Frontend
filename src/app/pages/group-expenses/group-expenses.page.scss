@@ -1,0 +1,80 @@
+ion-content {
+  --background: #2f3237 !important;
+}
+
+ion-toolbar {
+  //--background: #00b33c !important;
+  --background: #222428 !important;
+}
+
+ion-tab-bar {
+  --ion-color-dark-contrast: #00b33c !important;
+}
+
+ion-tab-button {
+  --color-selected:  #00b33c !important;
+}
+
+ion-title {
+  --color: white;
+}
+
+ion-segment-button {
+  --background: #222428 !important;
+  --background-activated: #00b33c !important;
+  --color: white !important;
+  --color-checked: #00b33c !important;
+}
+
+ion-back-button {
+  color: #00b33c !important;
+}
+
+.ion-icon-color {
+  color: #00b33c !important;
+}
+
+ion-label {
+  font-size: 0.75em;
+}
+
+ion-item {
+  --background: #2f3237 !important;
+}
+
+ion-badge {
+  --background: #00b33c !important;
+  --color: white !important;
+}
+
+ion-slides {
+  --bullet-background-active: #00b33c !important;
+}
+
+ngx-charts-bar-vertical-2d {
+  margin-top: 1em !important;
+  fontColor: white !important;
+  margin-right:2.5em !important;
+  text { fill: #fff !important; }
+}
+
+::ng-deep .ngx-charts {
+  text { fill: #fff !important; }
+  text-align: center !important;
+
+}
+
+ngx-charts-pie-chart {
+  fontColor: white !important;
+  text { fill: #fff !important; }
+}
+
+.chart-legend .legend-labels {
+  text-align: center !important;
+  text { fill: #fff !important; }
+}
+
+ngx-charts-pie-grid {
+  fontColor: white !important;
+  text { fill: #fff !important; }
+}

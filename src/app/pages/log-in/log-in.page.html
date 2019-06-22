@@ -1,9 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>logIn</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content color="dark">
+  <img class="rounded mx-auto d-block w-50 h-25 image-margin" src="../../assets/img/who-pays-image-logo.png">
 
-<ion-content>
 
+    <ion-item class="mt-5" color="dark">
+      <ion-icon class="mr-1" name="person"></ion-icon>
+      <ion-label>Username</ion-label>
+      <ion-input class="input-length" type="text"
+                 [(ngModel)]="userLogin.username"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="mt-2" color="dark">
+      <ion-icon class="mr-1" name="lock"></ion-icon>
+      <ion-label>Password</ion-label>
+      <ion-input class="input-length" type="password" size="50"
+                 [(ngModel)]="userLogin.password"></ion-input>
+    </ion-item>
+  <ion-button class=" button-color mt-3" shape="round" expand="block" size="large" (click)="onSubmitCredentials()">
+    LogIn
+  </ion-button>
+  <ion-label class="center-label mt-2">
+    OR
+  </ion-label>
+  <ion-button class=" button-color mt-2" shape="round" expand="block" size="large">
+    Sign Up
+  </ion-button>
+  <div class="text-center mt-2">
+    <a href="" class="foyopass-div">forgot your password?</a>
+  </div>
 </ion-content>

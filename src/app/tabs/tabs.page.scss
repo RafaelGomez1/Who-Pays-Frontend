@@ -1,1 +1,8 @@
+.tabs-md .tabbar , .tabs-ios .tabbar{
+  background: var(--ion-color-toolbar-dark);
+}
 
+
+ion-tab-bar {
+    --ion-color-dark-contrast: #00b33c !important;
+}
