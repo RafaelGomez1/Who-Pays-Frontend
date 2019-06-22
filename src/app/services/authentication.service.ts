@@ -34,11 +34,4 @@ export class AuthenticationService {
       return this.http.post<UserAccount>(`${this.serverUrl}/user/create`, userAccount,
           {headers : {Accept: 'application/json', 'Content-Type' : 'application/json'}}).pipe();
   }
-
-  getHeaders() {
-    const header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-  }
-
-
 }

@@ -21,6 +21,16 @@
     <ion-input class="input-length" type="password" size="50"
                [(ngModel)]="confirmedPassword"></ion-input>
   </ion-item>
+  <ion-item class="mt-2" color="dark">
+    <ion-icon class="mr-1" name="call"></ion-icon>
+    <ion-label>Phone Number</ion-label>
+    <ion-input class="input-length" type="tel" size="50"></ion-input>
+  </ion-item>
+  <ion-item class="mt-2" color="dark">
+    <ion-icon class="mr-1" name="mail"></ion-icon>
+    <ion-label>Email</ion-label>
+    <ion-input class="input-length" type="email" size="50"></ion-input>
+  </ion-item>
   <ion-button class=" button-color mt-2" shape="round" expand="block" size="large" (click)="onSubmitCredentials()">
     Create Account
   </ion-button>
