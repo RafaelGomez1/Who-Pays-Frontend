@@ -143,9 +143,4 @@ export class GroupExpensesPage implements OnInit {
          }
       });
     }
-
-    addElement(event: any) {
-        this.router.navigate(['/tabs/group/create/expenses', this.groupId]);
-    }
-
 }
