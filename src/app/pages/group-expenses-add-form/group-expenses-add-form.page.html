@@ -1,13 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button  defaultHref="/tabs" routerLink="/tabs"></ion-back-button>
+      <ion-back-button  defaultHref="" [routerLink]="['/tabs/group', this.groupId]"></ion-back-button>
     </ion-buttons>
     <ion-title class="text-center text-white" color="light">Add Expenses</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
+  <ion-card class="big">
+      <ion-card-header class="text-center">
+          <ion-label class="text-white font-size">Quantity</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-input class="text-white text-center font-size" type="number" [(ngModel)]="quantity"></ion-input>
+      </ion-card-content>
+  </ion-card>
   <ion-item color="dark" class="mt-2">
     <ion-icon class="mr-1" name="mic"  (click)="speechToTextInput($event)"></ion-icon>
     <ion-label class="text-white">Concept</ion-label>
@@ -24,29 +31,31 @@
                   ></ion-datetime>
   </ion-item>
   <ion-item color="dark" class="mt-2">
-    <ion-label class="text-white">Quantity</ion-label>
-    <ion-input class="input-length" type="number" [(ngModel)]="quantity"></ion-input>
-  </ion-item>
-  <ion-item color="dark" class="mt-2">
     <ion-label class="text-white">Total Debt</ion-label>
     <ion-input class="input-length" type="number" [(ngModel)]="totalDebt"></ion-input>
   </ion-item>
   <ion-item color="dark" class="mt-2">
     <ion-icon class="mr-1" name="person"></ion-icon>
     <ion-label class="text-white">Debtors</ion-label>
-    <ion-select multiple="true" okText="Select" cancelText="Cancel">
-      <ion-select-option value="Jt">Jt</ion-select-option>
-      <ion-select-option value="Rafa">Rafa</ion-select-option>
-      <ion-select-option value="Diego">Diego</ion-select-option>
-    </ion-select>
+      <ion-select multiple="true" okText="Select" cancelText="Cancel" (ionChange)="onDebtorsEventEmitted($event)">
+          <ion-select-option *ngFor="let member of groupMembers;" [value]="member">{{member.username}}</ion-select-option>
+      </ion-select>
   </ion-item>
   <ion-item color="dark" class="mt-2">
     <ion-icon class="mr-1" name="person"></ion-icon>
     <ion-label class="text-white">Payers</ion-label>
-    <ion-select multiple="true" okText="Select" cancelText="Cancel">
-      <ion-select-option value="Jt">Jt</ion-select-option>
-      <ion-select-option value="Rafa">Rafa</ion-select-option>
-      <ion-select-option value="Diego">Diego</ion-select-option>
+    <ion-select multiple="true" okText="Select" cancelText="Cancel" (ionChange)="onPayersEventEmitted($event)">
+      <ion-select-option *ngFor="let member of groupMembers; let index = index" [value]="member">{{member.username}}</ion-select-option>
     </ion-select>
   </ion-item>
+  <ion-item *ngFor="let payer of payers;" class="mt-2" color="dark">
+      <ion-icon class="mr-1" name="cash"></ion-icon>
+      <ion-label class="text-white">{{payer.debtor.username}} Owns </ion-label>
+      <ion-input class="input-length" type="number" [(ngModel)]="payer.quantity"></ion-input>
+      {{'to ' + payer.payer.username}}
+  </ion-item>
+  <ion-button class="button-color mt-3" shape="round" expand="block" size="large" (click)="onSubmitCredentials()">
+    Create
+  </ion-button>
+
 </ion-content>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Group} from '../../models/Group';
 import {GroupExpenses} from '../../models/GroupExpenses';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -50,6 +50,10 @@ export class GroupExpensesPage implements OnInit {
       this.getGroupById();
       this.getGroupBalance(this.groupId);
     });
+
+    ionViewWillEnter(); {
+      console.log('USER ionViewWillEnter');
+    }
 
     // Initializes the ion-segment variables
     this.expenses = true;
@@ -111,12 +115,17 @@ export class GroupExpensesPage implements OnInit {
           if (userBalance.debts !== null && userBalance.debts.length > 0) {
               let totalUserDebt = 0;
               userBalance.debts.forEach( debt => totalUserDebt += debt.quantity);
-              this.chartData.push(new ChartDataItem(userBalance.username, totalUserDebt));
-              console.log('the chartData length is : ' + this.chartData.length);
+              if (this.chartData.filter(element => element.name === userBalance.username).length <= 0) {
+                  this.chartData.push(new ChartDataItem(userBalance.username, totalUserDebt));
+              } else {
+                  this.chartData.forEach(element => {
+                      if (userBalance.username === element.name) {
+                          element.value = totalUserDebt;
+                      }
+                  });
+              }
           }
       });
-      console.log('the chartData length is : ' + this.chartData.length);
-      this.chartData.forEach(data => console.log(data.name + ' ' + data.value));
     }
 
     userBalanceToVerticalChart() {
@@ -136,7 +145,7 @@ export class GroupExpensesPage implements OnInit {
     }
 
     addElement(event: any) {
-        this.router.navigateByUrl('/tabs/group/create/expenses');
+        this.router.navigate(['/tabs/group/create/expenses', this.groupId]);
     }
 
 }

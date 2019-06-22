@@ -2,6 +2,7 @@ import {Payer} from './Payer';
 import {Debtor} from './Debtor';
 import {Category} from './Category';
 import {Payment} from './Payment';
+import {ExpenseStatus} from './Status';
 
 export class GroupExpenses {
     id: string;
@@ -13,10 +14,11 @@ export class GroupExpenses {
     debtors: Debtor[] = [];
     date: Date;
     category: Category;
-    status: Status = Status.NOT_PAID;
+    status: ExpenseStatus;
     payments: Payment[] = [];
 
     constructor() {
         this.date = new Date();
+        this.status = ExpenseStatus.NOT_PAID;
     }
 }

@@ -32,6 +32,10 @@ const routes: Routes = [
             loadChildren: '../pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule'
           },
           {
+            path: 'group/create/expenses/:groupId',
+            loadChildren: '../pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule'
+          },
+          {
             path: 'group/:id',
             children: [
                 {
@@ -76,6 +80,11 @@ const routes: Routes = [
   {
     path: 'group/create/expenses',
     redirectTo: '/tabs/tabs/tab2/group/create/expenses',
+    pathMatch: 'full'
+  },
+  {
+    path: 'group/create/expenses/:groupId',
+    redirectTo: '/tabs/tabs/tab2/group/create/expenses/:groupId',
     pathMatch: 'full'
   }
 ];
