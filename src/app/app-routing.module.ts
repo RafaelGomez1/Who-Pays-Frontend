@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'group-expenses', loadChildren: './pages/group-expenses/group-expenses.module#GroupExpensesPageModule' },
   { path: 'group-balance', loadChildren: './pages/group-balance/group-balance.module#GroupBalancePageModule' },
   { path: 'list-view', loadChildren: './components/list-view/list-view.module#ListViewPageModule' },
-  { path: 'group-expenses-add-form', loadChildren: './pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule' }
+  { path: 'group-expenses-add-form',
+    loadChildren: './pages/group-expenses-add-form/group-expenses-add-form.module#GroupExpensesAddFormPageModule' }
 
 ];
 @NgModule({

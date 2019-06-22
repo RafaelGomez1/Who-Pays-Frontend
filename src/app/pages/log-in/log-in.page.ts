@@ -33,6 +33,10 @@ export class LogInPage implements OnInit {
       });
   }
 
+    createAccount() {
+      this.router.navigateByUrl('register');
+    }
+
     async presentToast() {
         const toast = await this.toastController.create({
             message: 'Invalid Credentials',

@@ -3,6 +3,7 @@ import {UserLogin} from '../models/UserLogin';
 import {Observable} from 'rxjs';
 import {LogInRs} from '../models/LogInRs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserAccount} from '../models/UserAccount';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,14 @@ export class AuthenticationService {
         { headers : {Accept : 'application/json'}});
   }
 
+  createUserAccount(userAccount: UserAccount): Observable<UserAccount> {
+      return this.http.post<UserAccount>(`${this.serverUrl}/user/create`, userAccount,
+          {headers : {Accept: 'application/json', 'Content-Type' : 'application/json'}}).pipe();
+  }
+
   getHeaders() {
     const header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-
-
   }
 
 
