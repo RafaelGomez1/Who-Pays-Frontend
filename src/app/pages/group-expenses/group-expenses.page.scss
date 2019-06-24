@@ -36,6 +36,7 @@ ion-back-button {
 
 ion-label {
   font-size: 0.75em;
+  display: inline-block;
 }
 
 ion-item {
@@ -80,5 +81,15 @@ ngx-charts-pie-grid {
 }
 
 .text-size {
-  font-size: 0.6em;
+  font-size: 0.70em;
+}
+
+.date-text-size {
+  font-size: 0.95em !important;
+  display: inline-block !important;
+}
+
+.fixedLabel {
+  min-width: 32% !important;
+  max-width: 32% !important;
 }

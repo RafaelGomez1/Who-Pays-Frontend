@@ -29,8 +29,10 @@
     </ion-segment>
     <ion-virtual-scroll [items]="groupExpenses" *ngIf="expenses">
       <ion-item *virtualItem="let groupExpense">
-          <ion-label class="text-white">{{groupExpense.date}}</ion-label>
-          <ion-label class="text-center text-white">{{groupExpense.concept}}</ion-label>
+          <ion-label class="mr-1">
+              <span class="text-white mr-3">{{groupExpense.date | date: 'dd-MM-yyyy'}}</span>
+              <span class="text-white text-center">{{groupExpense.concept}}</span>
+          </ion-label>
           <ion-badge class="text-size" color="danger">{{groupExpense.status}}</ion-badge>
       </ion-item>
     </ion-virtual-scroll>

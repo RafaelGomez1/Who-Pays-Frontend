@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Group} from '../../models/Group';
 import {GroupExpenses} from '../../models/GroupExpenses';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -8,6 +8,7 @@ import {GroupBalance} from '../../models/GroupBalance';
 import {ChartDataItem} from '../../models/ChartDataItem';
 import {Platform} from '@ionic/angular';
 import {GroupedVerticalBarChart} from '../../models/GroupedVerticalBarChart';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-group-expenses',
@@ -68,12 +69,18 @@ export class GroupExpensesPage implements OnInit {
         this.activityName = group.groupName;
         if (group.groupExpenses != null) {
           this.groupExpenses = group.groupExpenses;
+          // this.formatAllDates(this.groupExpenses);
         }
         if (group.members !== null && group.members.length > 0) {
             this.groupMembers = group.members;
         }
       }
     });
+  }
+
+  formatAllDates(groupExpenses: GroupExpenses[]) {
+      groupExpenses.forEach( expens => {
+      });
   }
 
   membersSegmentSelected(event: any) {
