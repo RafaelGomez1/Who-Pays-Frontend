@@ -31,7 +31,7 @@
       <ion-item *virtualItem="let groupExpense">
           <ion-label class="text-white">{{groupExpense.date}}</ion-label>
           <ion-label class="text-center text-white">{{groupExpense.concept}}</ion-label>
-          <ion-badge color="danger">{{groupExpense.status}}</ion-badge>
+          <ion-badge class="text-size" color="danger">{{groupExpense.status}}</ion-badge>
       </ion-item>
     </ion-virtual-scroll>
     <ion-virtual-scroll [items]="groupMembers" *ngIf="members">
